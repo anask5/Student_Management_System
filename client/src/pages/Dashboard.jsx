@@ -1,6 +1,28 @@
+import { useEffect } from "react";
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
+const navigate = useNavigate();
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
+  async function checkLogin() {
+    try {
+      const response = await fetch("http://localhost:3000/api/me", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        navigate("/login");
+      }
+    } catch (err) {
+      console.error(err);
+      navigate("/login");
+    }
+  }
   return (
     <>
       <style>{`

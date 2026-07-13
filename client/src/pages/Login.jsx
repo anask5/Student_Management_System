@@ -4,10 +4,13 @@ import { useState } from "react";
 const Login = () => {
     const [email, setEmail ] = useState('');
     const [password, setPassword ] = useState('');
+    const [message , setMessage] = useState('');
     async function handleLogin(e){
         e.preventDefault();
-   const response = await fetch("https://localhost/3000/api/login", {
+        try {
+   const response = await fetch("http://localhost:3000/api/login", {
              method: "POST",
+             credentials: "include",
             headers: {
              "Content-Type": "application/json"
     },
@@ -15,7 +18,18 @@ const Login = () => {
         email,
         password
     })
-});
+  });
+  const data = await response.json();
+
+  if(response.ok){
+    setMessage(data.message);
+  }
+  else{
+    setMessage(data.message);
+  }
+} catch(err){
+    setMessage(err.message);
+}
     }
   return (
     
@@ -152,6 +166,7 @@ value={email}     onChange={(e) => setEmail(e.target.value)} />
           <button type="submit"  className="login-btn" >
             Login →
           </button>
+          <p> {message}</p>
          </form>
           {/* <div className="forgot">
             <a href="/">Forgot Password?</a>

@@ -1,7 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate} from "react-router-dom";
+
 
 const Register = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
+    async function handleReg(e){
+        e.preventDefault()
+     try { const response = await fetch("http://localhost:3000/api/register", {
+            credentials: "include",
+             method: "POST",
+            headers: {
+             "Content-Type": "application/json"
+    },
+         body: JSON.stringify({
+        name,
+        email,
+        password,
+    })
+});
+   const data = await response.json();
+if (response.ok) {
+    setMessage(data.message);
+    navigate("/dashboard")
+}
+else{
+    setMessage(data.message);
+}
+     } catch(err) {
+        console.log(err)
+     }
+    }
   return (
     <>
       <style>{`
@@ -113,31 +145,24 @@ const Register = () => {
         <div className="register-card">
           <h1>🎓 Register</h1>
           <p>Create your Student Management account</p>
-
+          <form onSubmit={handleReg}> 
           <div className="input-group">
-            <input type="text" placeholder="Full Name" />
+            <input type="text" placeholder="Full Name" onChange={(e) => setName(e.target.value)}/>
           </div>
 
           <div className="input-group">
-            <input type="email" placeholder="Email Address" />
+            <input type="email" placeholder="Email Address" onChange={(e) => setEmail(e.target.value)}/>
           </div>
 
           <div className="input-group">
-            <input type="text" placeholder="Student ID" />
+            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
           </div>
 
-          <div className="input-group">
-            <input type="password" placeholder="Password" />
-          </div>
-
-          <div className="input-group">
-            <input type="password" placeholder="Confirm Password" />
-          </div>
-
-          <button className="register-btn">
+          <button type="submit" className="register-btn">
             Create Account
           </button>
-
+          </form>
+          <p>{message}</p>
           <div className="login-link">
             Already have an account?{" "}
             <Link to="/login">Login</Link>
