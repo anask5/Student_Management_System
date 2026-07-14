@@ -1,9 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
 const navigate = useNavigate();
-
   useEffect(() => {
     checkLogin();
   }, []);

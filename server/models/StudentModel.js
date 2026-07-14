@@ -8,45 +8,51 @@ const studentSchema = new mongoose.Schema(
       trim: true,
     },
 
-    Roll_NO: {
+    rollNo: {
       type: Number,
       required: true,
       unique: true,
     },
 
-email: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
-    lowercase: true
-},
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
+    },
+
     branch: {
       type: String,
       required: true,
+      trim: true,
     },
 
     semester: {
       type: Number,
-     required: true
+      required: true,
     },
+
     cgpa: {
       type: Number,
-     required: true
+      required: true,
     },
+
     attendance: {
       type: Number,
-     required: true
+      required: true,
     },
-    phone_no: {
+
+    phoneNo: {
       type: String,
-     required: true
-    }
-),
-{
-        timestamps: true
-    }
-};
+      required: true,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const Student = mongoose.model("Student", studentSchema);
 
