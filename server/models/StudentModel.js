@@ -29,17 +29,17 @@ const studentSchema = new mongoose.Schema(
     },
 
     semester: {
-      type: Number,
+      type: String,
       required: true,
     },
 
     cgpa: {
-      type: Number,
+      type: String,
       required: true,
     },
 
     attendance: {
-      type: Number,
+      type: String,
       required: true,
     },
 

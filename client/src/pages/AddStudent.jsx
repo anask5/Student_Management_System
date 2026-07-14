@@ -9,13 +9,41 @@ const AddStudent = () => {
   const [phone, setPhone] = useState('');
   const [branch, setBranch] = useState('');
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
 
-  const handleSubmit = (e) => {
+  async function  handleSubmit(e){
     e.preventDefault();
     console.log(name);
+     try { const response = await fetch("http://localhost:3000/api/addStudent", {
+            credentials: "include",
+             method: "POST",
+            headers: {
+             "Content-Type": "application/json"
+    },
+         body: JSON.stringify({
+        name,
+        email,
+        rollno,
+        semester,
+        cgpa,
+        attendance,
+        phone,
+        branch,
+        })
+});
+   const data = await response.json();
+ if (response.ok) {
+    setMessage(data.message);
     alert("Student Added Successfully!");
-  };
+}
+else{
+    setMessage(data.message);
+}
+     } catch(err) {
+        console.log(err)
+     }
+    }
 
   return (
     <>
@@ -239,6 +267,15 @@ onChange={(e) => setSemester(e.target.value)}
   onChange={(e) => setAttendance(e.target.value)}
               />
             </div>
+            <div className="input-group">
+              <label>CGPA (%)</label>
+              <input
+                type="number"
+                name="cgpa"
+                placeholder="9.5"
+  onChange={(e) => setCgpa(e.target.value)}
+              />
+            </div>
 
           </div>
 
@@ -250,6 +287,7 @@ onChange={(e) => setSemester(e.target.value)}
             >
               Cancel
             </button>
+            <p> {message} </p>
 
             <button
               type="submit"

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 const Dashboard = () => {
 const navigate = useNavigate();
   useEffect(() => {
@@ -229,8 +229,10 @@ const navigate = useNavigate();
 
             <div className="quick-actions">
               <button className="action-btn">
+                 <Link to="/addStudent">
                 ➕ Add Student
-              </button>
+            </Link>
+                          </button>
 
               <button className="action-btn">
                 📅 Mark Attendance
@@ -241,7 +243,9 @@ const navigate = useNavigate();
               </button>
 
               <button className="action-btn">
-                📊 Generate Report
+                 <Link to="/students">
+    📊 View Students
+                </Link>
               </button>
             </div>
 

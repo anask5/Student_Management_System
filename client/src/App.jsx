@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import AddStudent from "./pages/AddStudent";
+import Students from "./pages/Students";
 
 function App() {
   const router = createBrowserRouter([
@@ -29,6 +30,9 @@ function App() {
         },
          { path: "/addStudent",
           element: <AddStudent />,
+        },
+         { path: "/students",
+          element: <Students />,
         }
       ],
     },

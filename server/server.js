@@ -7,6 +7,8 @@ import jwt from "jsonwebtoken";
 import bcrypt from 'bcrypt';
 import cors from 'cors';
 import auth from '../server/middleware/auth.js'
+import studentModel from '../server/models/StudentModel.js';
+import isTeacher from "./middleware/isTeacher.js";
 const app = express();
 const port = 3000;
 
@@ -106,18 +108,52 @@ app.post('/api/login', async (req, res) => {
 app.get("/api/me", auth, (req, res) => {
     res.json(req.user);
 });
-// app.get('/admin', (req, res) => {
-//     try {
-//         const data = jwt.verify(req.cookies.token, "secret");
 
-//         if (data.admin === true) {
-//             return res.sendFile(AdminPageFileLocation);
-//         }
-//     return res.status(403).send("Access Denied");
-//     } catch (err) {
-//         return res.status(401).send("Please login first");
-//     }
-// }); 
+
+app.post("/api/addStudent", auth,isTeacher, async (req, res) => {
+
+            try {
+            const data = await req.body;
+            console.log(data);
+           const response = await studentModel.create({
+                name: data.name,
+                rollNo: data.rollno,
+                email: data.email,
+                branch: data.branch,
+                semester: data.semester,
+                cgpa: data.cgpa,
+                attendance: data.attendance,
+                phoneNo: data.phone,
+
+            })
+            res.status(201).json({
+                success: true,
+                message:" student added succesfully "
+            }) }
+            catch(err){
+                       return res.status(400).json({
+                            success: false,
+                            message: err.message || "Failed to add student"
+                        });
+            }
+})
+
+app.get("/api/getStudents", auth, async (req, res) => {
+    try {
+        const students = await studentModel.find();
+
+        return res.status(200).json({
+            success: true,
+            students,
+        });
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: err.message,
+        });
+    }
+});
+
     app.listen(port, () => {
     console.log(`🚀 Server running on port ${port}`);
 })

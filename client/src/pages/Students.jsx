@@ -1,38 +1,33 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Students = () => {
-  const students = [
-    {
-      id: "STU001",
-      name: "Rahul Sharma",
-      course: "BCA",
-      semester: "6th",
-      attendance: "94%",
-    },
-    {
-        
-      id: "STU002",
-      name: "Priya Singh",
-      course: "B.Tech",
-      semester: "4th",
-      attendance: "91%",
-    },
-    {
-      id: "STU003",
-      name: "Amit Verma",
-      course: "B.Sc",
-      semester: "2nd",
-      attendance: "96%",
-    },
-    {
-      id: "STU004",
-      name: "Neha Gupta",
-      course: "MBA",
-      semester: "1st",
-      attendance: "89%",
-    },
-  ];
 
+ 
+  async function getStudents() {
+    try {
+        const response = await fetch("http://localhost:3000/api/getStudents",
+          {
+            credentials: "include",
+          });
+        const data = await response.json();
+        setStudents(data.students);
+    } 
+    catch(err){
+        console.error(err);
+        setMessage(err.message);
+
+
+    }
+  }
+useEffect(() => {
+    getStudents();
+}, []);
+
+  const [students, setStudents] = useState([])
+  const [message, setMessage] = useState('')
   return (
     <>
       <style>{`
@@ -193,7 +188,7 @@ const Students = () => {
 
         }
       `}</style>
-
+          <p> { message } </p>
       <div className="students-page">
 
         <div className="header">
@@ -210,7 +205,7 @@ const Students = () => {
             />
 
             <button className="add-btn">
-              + Add Student
+               <Link to="/addStudent">  + Add Student </Link>
             </button>
           </div>
         </div>
@@ -223,7 +218,7 @@ const Students = () => {
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Course</th>
+                <th>Branch</th>
                 <th>Semester</th>
                 <th>Attendance</th>
                 <th>Status</th>
@@ -233,13 +228,13 @@ const Students = () => {
 
             <tbody>
 
-              {students.map((student) => (
-                <tr key={student.id}>
-                  <td>{student.id}</td>
-                  <td>{student.name}</td>
-                  <td>{student.course}</td>
-                  <td>{student.semester}</td>
-                  <td>{student.attendance}</td>
+              {students.map((students) => (
+                <tr key={students.rollNo}>
+                  <td>{students.rollNo}</td>
+                  <td>{students.name}</td>
+                  <td>{students.branch}</td>
+                  <td>{students.semester}</td>
+                  <td>{students.attendance}</td>
 
                   <td>
                     <span className="status">Active</span>
