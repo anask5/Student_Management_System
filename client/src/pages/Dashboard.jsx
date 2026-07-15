@@ -235,16 +235,18 @@ const navigate = useNavigate();
                           </button>
 
               <button className="action-btn">
-                📅 Mark Attendance
+                <Link to="/updateStudent">     📅 Update Student </Link>
+            
               </button>
 
               <button className="action-btn">
-                📚 Manage Courses
+                <Link to="/deleteStudent">    📚 Delete Student </Link>
               </button>
 
               <button className="action-btn">
                  <Link to="/students">
     📊 View Students
+    
                 </Link>
               </button>
             </div>

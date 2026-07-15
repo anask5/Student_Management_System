@@ -5,7 +5,9 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import AddStudent from "./pages/AddStudent";
+import EditStudent from "./pages/EditStudent";
 import Students from "./pages/Students";
+import DeleteStudent from "./pages/DeleteStudent";
 
 function App() {
   const router = createBrowserRouter([
@@ -33,7 +35,13 @@ function App() {
         },
          { path: "/students",
           element: <Students />,
-        }
+        },
+         { path: "/updateStudent",
+          element: <EditStudent />,
+        },
+         { path: "/deleteStudent",
+          element: <DeleteStudent />,
+        },
       ],
     },
   ]);

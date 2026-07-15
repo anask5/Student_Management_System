@@ -20,7 +20,7 @@ app.use(
   cors({
     origin: "http://localhost:5173", 
     credentials: true, // React app
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 
@@ -65,6 +65,58 @@ app.post('/api/register', async (req, res) => {
         res.status(500).send("Server Error");
     }
 })
+
+app.put('/api/updateStudent/:id', auth, async (req, res) => {
+  try {
+    const rollNo = req.params.id;
+
+    const student = await studentModel.findOneAndUpdate(
+      { rollNo: rollNo },
+      req.body,
+      { new: true }
+    );
+
+    if (!student) {
+      return res.status(404).json({
+        message: "Student not found"
+      });
+    }
+
+    res.status(200).json({
+      student,
+      message: "Student Updated Successfully"
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err.message
+    });
+  }
+});
+
+app.delete('/api/deleteStudent/:id', auth, async (req, res) => {
+  try {
+    const rollNo = Number(req.params.id);
+
+    const student = await studentModel.findOneAndDelete(
+      { rollNo: rollNo }
+    );
+
+    if (!student) {
+      return res.status(404).json({
+        message: "Student not found"
+      });
+    }
+
+    res.status(200).json({
+      student,
+      message: "Student Deleted Successfully"
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err.message
+    });
+  }
+});
 
 app.post('/api/login', async (req, res) => {
     try {

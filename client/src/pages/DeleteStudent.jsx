@@ -1,41 +1,26 @@
 import React, { useState } from "react";
 
-const AddStudent = () => {
-  const [name, setName] = useState('');
+const DeleteStudent = () => {
   const [rollno, setRollNo] = useState('');
-  const [semester, setSemester] = useState('');
-  const [cgpa, setCgpa] = useState('');
-  const [attendance, setAttendance] = useState('');
-  const [phone, setPhone] = useState('');
-  const [branch, setBranch] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-
+  const [message, setMessage] = useState('')
 
   async function  handleSubmit(e){
     e.preventDefault();
-    console.log(name);
-     try { const response = await fetch(`http://localhost:3000/api/updateStudent/${rollno}`, {
+    alert("Are you sure you want to delete?")
+     try { const response = await fetch(`http://localhost:3000/api/deleteStudent/${rollno}`, {
             credentials: "include",
-             method: "PUT",
+             method: "DELETE",
             headers: {
              "Content-Type": "application/json"
     },
          body: JSON.stringify({
-        name,
-        email,
         rollno,
-        semester,
-        cgpa,
-        attendance,
-        phone,
-        branch,
         })
 });
    const data = await response.json();
  if (response.ok) {
     setMessage(data.message);
-    alert("Student Updated Successfully!");
+    alert("Student Deleted Successfully!");
 }
 else{
     setMessage(data.message);
@@ -189,7 +174,7 @@ else{
       <div className="add-student-page">
 
         <div className="page-title">
-          <h1>➕ Update Student</h1>
+          <h1>🗑️ Delete Student</h1>
           <p>Fill in the student information below.</p>
         </div>
 
@@ -202,79 +187,9 @@ else{
               <input
                 type="text"
                 name="rollno"
-                placeholder="Enter rollNo to update student"
+                placeholder="Enter rollNo to delete student"
 onChange={(e) => setRollNo(e.target.value)}       
 required    />
-            </div>
-
-            <div className="input-group">
-              <label>Full Name</label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter student name"
-onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
-
-            <div className="input-group">
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="student@email.com"
-onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-
-            <div className="input-group">
-              <label>Phone</label>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="+91 9876543210"
-onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-
-            <div className="input-group">
-              <label>Branch</label>
-              <input
-                type="text"
-                name="branch"
-                placeholder="B.tech"
-onChange={(e) => setBranch(e.target.value)}
-              />
-            </div>
-
-            <div className="input-group">
-              <label>Semester</label>
-              <input
-                type="text"
-                name="semester"
-                placeholder="2nd"
-onChange={(e) => setSemester(e.target.value)}
-              />
-            </div>
-
-            <div className="input-group">
-              <label>Attendance (%)</label>
-              <input
-                type="number"
-                name="attendance"
-                placeholder="95"
-  onChange={(e) => setAttendance(e.target.value)}
-              />
-            </div>
-            <div className="input-group">
-              <label>CGPA (%)</label>
-              <input
-                type="number"
-                name="cgpa"
-                placeholder="9.5"
-  onChange={(e) => setCgpa(e.target.value)}
-              />
             </div>
 
           </div>
@@ -293,7 +208,7 @@ onChange={(e) => setSemester(e.target.value)}
               type="submit"
               className="btn save"
             >
-              Submit Student
+              Delete Student
             </button>
           </div>
 
@@ -304,4 +219,4 @@ onChange={(e) => setSemester(e.target.value)}
   );
 };
 
-export default AddStudent;
+export default DeleteStudent;

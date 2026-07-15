@@ -22,6 +22,37 @@ const Students = () => {
 
     }
   }
+  
+async function  deleteStudent(rollno){
+    const confirmDelete = window.confirm(
+    "Are you sure you want to delete this student?"
+);
+
+if (!confirmDelete) {
+    return;
+}
+     try { const response = await fetch(`http://localhost:3000/api/deleteStudent/${rollno}`, {
+            credentials: "include",
+             method: "DELETE",
+            headers: {
+             "Content-Type": "application/json"
+    },
+         body: JSON.stringify({
+        rollno,
+        })
+});
+   const data = await response.json();
+ if (response.ok) {
+    alert("Student Deleted Successfully!");
+    await getStudents();
+}
+else{
+    setMessage(data.message);
+}
+     } catch(err) {
+        console.log(err)
+     }
+    }
 useEffect(() => {
     getStudents();
 }, []);
@@ -243,7 +274,7 @@ useEffect(() => {
                   <td>
                     <div className="actions">
                       <button className="btn edit">Edit</button>
-                      <button className="btn delete">Delete</button>
+                      <button className="btn delete" onClick={() => deleteStudent(students.rollNo)}>Delete</button>
                     </div>
                   </td>
                 </tr>
