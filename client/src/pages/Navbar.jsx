@@ -1,7 +1,43 @@
+import { useEffect, useState } from "react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const NavBar = () => {
+  const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [message, setMessage] = useState(false);
+  useEffect(() => {
+    checkLogin();
+}, []);
+async function handleLogout(){
+    try {
+  const response = await fetch("http://localhost:3000/api/logout", {
+          credentials: "include",
+          method: "POST"
+  },
+  )
+       if(response.ok){
+        setLoggedIn(false);
+        const data = await response.json();
+      window.alert("Logout Success" + data.message ),
+      navigate("/")
+       }
+}
+  catch(err){
+        console.log(err.message)
+  }
+}
+async function checkLogin() {
+    const response = await fetch("http://localhost:3000/api/me", {
+        credentials: "include",
+    });
+
+    if (response.ok) {
+        setLoggedIn(true);
+    } else {
+        setLoggedIn(false);
+    }
+}
   return (
     <>
       <style>{`
@@ -147,17 +183,25 @@ const NavBar = () => {
               <li>Home</li>
             </Link>
 
-            <Link to="/dashboard">
-              <li>Dashboard</li>
-            </Link>
+     {loggedIn ? (
+  <>
+    <Link to="/dashboard">
+      <li>Dashboard</li>
+    </Link>
 
-            <Link to="/login">
-              <li>Login</li>
-            </Link>
+    <li onClick={handleLogout}>Logout</li>
+  </>
+) : (
+  <>
+    <Link to="/login">
+      <li>Login</li>
+    </Link>
 
-            <Link to="/register">
-              <li className="register">Register</li>
-            </Link>
+    <Link to="/register">
+      <li className="register">Register</li>
+    </Link>
+  </>
+)}
           </ul>
 
         </div>

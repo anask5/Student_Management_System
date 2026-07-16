@@ -273,7 +273,7 @@ useEffect(() => {
 
                   <td>
                     <div className="actions">
-                      <button className="btn edit">Edit</button>
+                      <button className="btn edit"> <Link to="/updateStudent"> Edit </Link></button>
                       <button className="btn delete" onClick={() => deleteStudent(students.rollNo)}>Delete</button>
                     </div>
                   </td>

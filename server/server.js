@@ -206,6 +206,24 @@ app.get("/api/getStudents", auth, async (req, res) => {
     }
 });
 
+app.post("/api/logout", auth, async (req, res) => {
+    try {
+         res.clearCookie("token", {
+            httpOnly: true,
+            sameSite: "lax",
+        });
+          return res.status(200).json({
+            success: true,
+            message: "Logout Successfully"
+          })
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: err.message,
+        });
+    }
+});
+
     app.listen(port, () => {
     console.log(`🚀 Server running on port ${port}`);
 })
