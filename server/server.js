@@ -66,7 +66,7 @@ app.post('/api/register', async (req, res) => {
     }
 })
 
-app.put('/api/updateStudent/:id', auth, async (req, res) => {
+app.put('/api/updateStudent/:id', auth,isTeacher, async (req, res) => {
   try {
     const rollNo = req.params.id;
 
@@ -93,7 +93,7 @@ app.put('/api/updateStudent/:id', auth, async (req, res) => {
   }
 });
 
-app.delete('/api/deleteStudent/:id', auth, async (req, res) => {
+app.delete('/api/deleteStudent/:id', auth,isTeacher, async (req, res) => {
   try {
     const rollNo = Number(req.params.id);
 
@@ -190,7 +190,7 @@ app.post("/api/addStudent", auth,isTeacher, async (req, res) => {
             }
 })
 
-app.get("/api/getStudents", auth, async (req, res) => {
+app.get("/api/getStudents", auth,isTeacher, async (req, res) => {
     try {
         const students = await studentModel.find();
 
