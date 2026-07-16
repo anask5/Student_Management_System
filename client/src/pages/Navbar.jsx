@@ -19,7 +19,7 @@ async function handleLogout(){
        if(response.ok){
         setLoggedIn(false);
         const data = await response.json();
-      window.alert("Logout Success" + data.message ),
+      window.alert(data.message ),
       navigate("/")
        }
 }
