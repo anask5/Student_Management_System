@@ -124,8 +124,8 @@ const Footer = () => {
             <h3>Contact</h3>
 
             <p>📧 support@fs0ciety.in</p>
-            <p>📞 +91 98765 43210</p>
-            <p>📍 College Campus</p>
+            <p>📞 +91000000000</p>
+            <p>📍 # Campus</p>
           </div>
 
         </div>
