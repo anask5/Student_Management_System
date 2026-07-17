@@ -1,55 +1,63 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import imp from "/public/login2.png";
 
 const Login = () => {
-    const navigate = useNavigate();
-    const [email, setEmail ] = useState('');
-    const [password, setPassword ] = useState('');
-    const [message , setMessage] = useState('');
-    async function handleLogin(e){
-        e.preventDefault();
-        try {
-   const response = await fetch("http://localhost:3000/api/login", {
-             method: "POST",
-             credentials: "include",
-            headers: {
-             "Content-Type": "application/json"
-    },
-         body: JSON.stringify({
-        email,
-        password
-    })
-  });
-  const data = await response.json();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  async function handleLogin(e) {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          password
+        })
+      });
+      const data = await response.json();
 
-  if(response.ok){
-    setMessage(data.message);
-    navigate("/dashboard")
-  }
-  else{
-    setMessage(data.message);
-  }
-} catch(err){
-    setMessage(err.message);
-}
+      if (response.ok) {
+        setMessage(data.message);
+        navigate("/dashboard")
+      }
+      else {
+        setMessage(data.message);
+      }
+    } catch (err) {
+      setMessage(err.message);
     }
+  }
   return (
-    
+
     <>
       <style>{`
+
+      @font-face {
+        font-family: 'Phantom';
+        src: url('/public/PhantomGuardian.woff');
+      }
         *{
           margin:0;
           padding:0;
           box-sizing:border-box;
-          font-family:Inter,Segoe UI,sans-serif;
+          font-family:Phantom,Segoe UI,sans-serif;
         }
 
         .login-page{
           min-height:100vh;
-          display:flex;
+          display:grid;
           justify-content:center;
           align-items:center;
+          grid-auto-flow: column;
+          grid-template-columns:auto;
 
           background:
           radial-gradient(circle at top left,#4f46e5 0%,transparent 35%),
@@ -60,30 +68,76 @@ const Login = () => {
         .login-card{
           width:380px;
           padding:40px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
 
-          background:rgba(255,255,255,.08);
+
+          background:rgba(255, 255, 255, 0.04);
           backdrop-filter:blur(25px);
           -webkit-backdrop-filter:blur(25px);
 
-          border:1px solid rgba(255,255,255,.15);
-          border-radius:25px;
+          border:1px solid rgba(255, 255, 255, 0.1);
+          border-top-left-radius: 25px;
+          border-bottom-left-radius: 25px;
 
           box-shadow:
           0 20px 40px rgba(0,0,0,.35),
           inset 0 1px rgba(255,255,255,.1);
         }
-
+        
         .login-card h1{
           color:#fff;
-          text-align:center;
+          text-align:left;
           margin-bottom:10px;
-          font-size:34px;
-        }
+          font-size:50px;
+          }
+          
+          .login-card p{
+            color:#cbd5e1;
+            text-align:left;
+            margin-bottom:30px;
+            font-size: 20px;
+            }
+            
+            
+        .in-card{
+          width:380px;
 
-        .login-card p{
-          color:#cbd5e1;
-          text-align:center;
-          margin-bottom:30px;
+          padding:40px;
+              
+          background:rgba(0,0,0,0);
+          backdrop-filter:blur(25px);
+          -webkit-backdrop-filter:blur(25px);
+              
+          border:1px solid rgba(255,255,255,.15);
+          border-top-right-radius:25px;
+          border-bottom-right-radius:25px;
+          
+          box-shadow:
+          0 20px 40px rgba(0,0,0,.35),
+          inset 0 1px rgba(255,255,255,.1);
+        }
+          
+        .in-card h1{
+          color:#fff;
+          text-align:left;
+          font-size:44px;
+          }
+          .in-card p{
+          color:#fff;
+          text-align:left;
+          margin-bottom:10px;
+          font-size:20px;
+          }
+
+          .in-card img{
+            width:100%;
+            height:70%;
+            border-radius:20px;
+          }
+        .in-card, .login-card{
+          height:600px;
         }
 
         .input-group{
@@ -92,39 +146,45 @@ const Login = () => {
 
         .input-group input{
           width:100%;
-          padding:16px 18px;
+          padding:16px 2px;
           border:none;
           outline:none;
-          border-radius:14px;
+          
+          border-bottom: 3px solid #000000a3;
+          
 
-          background:rgba(255,255,255,.08);
+          background:rgba(44, 44, 44, 0.03);
           color:white;
-          font-size:16px;
-
-          border:1px solid rgba(255,255,255,.12);
-
+          font-size:20px;
           transition:.3s;
         }
-
+        .input-group::valid{
+          border-radius:20px;
+          background:rgba(44, 44, 44, 0.03);
+        }
         .input-group input::placeholder{
           color:#cbd5e1;
         }
 
         .input-group input:focus{
+          border:1px solid rgba(255,255,255,.12);
+          padding:16px 18px;
           border-color:#6366f1;
+          border-radius:14px;
           box-shadow:0 0 15px rgba(99,102,241,.45);
         }
 
         .login-btn{
           width:100%;
           padding:16px;
+          margin-top:50px;
           border:none;
           border-radius:14px;
           cursor:pointer;
 
           background:linear-gradient(135deg,#6366f1,#8b5cf6);
           color:white;
-          font-size:17px;
+          font-size:20px;
           font-weight:600;
 
           transition:.3s;
@@ -149,35 +209,65 @@ const Login = () => {
         .forgot a:hover{
           text-decoration:underline;
         }
+      @media (max-width:900px){
+        .in-card{
+          display:none;
+        }
+        .login-card{
+          border-radius:25px;
+          height: 70%;
+          width: 85vw;
+        }
+      }
+      .gaping{
+        height:60px
+      }
+      .W-gap{
+      height: 20px
+      }
 
       `}</style>
+      <p className="gaping" ></p>
 
       <div className="login-page">
+
         <div className="login-card">
-          <h1>👋 Welcome</h1>
-          <p>Sign in to continue</p>
-        <form onSubmit={handleLogin}>
-          <div className="input-group">
-            <input type="email" placeholder="Email Address" 
-value={email}     onChange={(e) => setEmail(e.target.value)} />
-          </div>
+          <h1>Login</h1>
+          <p>Enter your account details</p>
+          <p className="W-gap"></p>
+          <form onSubmit={handleLogin}>
+            <div className="input-group">
+              <input type="email" placeholder="Email Address " required
+                value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
 
-          <div className="input-group">
-            <input type="password" placeholder="Password" value={password}    onChange={(e) => setPassword(e.target.value)} />
-          </div>
+            <div className="input-group">
+              <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
 
-          <button type="submit"  className="login-btn" >
-            Login →
-          </button>
-          <p> {message}</p>
-         </form>
+            <button type="submit" className="login-btn" >
+              Login →
+            </button>
+            <p> {message}</p>
+          </form>
           {/* <div className="forgot">
             <a href="/">Forgot Password?</a>
           </div> */}
+        </div>
+        <div className="in-card">
+          <p className="W-gap"></p>
+          <h1>Welcome to</h1>
+          <h1>student portal</h1>
+          <p>Login to access your account</p>
+          <Image />
         </div>
       </div>
     </>
   );
 };
-
+function Image() {
+  return (
+    <img src={imp} alt="students" />
+  )
+}
 export default Login;
