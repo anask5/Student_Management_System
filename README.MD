@@ -133,18 +133,18 @@ Protected Routes
 
 | Register | Login |
 |----------|-------|
-| Add Screenshot | Add Screenshot |
+| # Screenshot | # Screenshot |
 
 | Dashboard | Students |
 |-----------|----------|
-| Add Screenshot | Add Screenshot |
+| # Screenshot | # Screenshot |
 
 ---
 
 ## 💻 Installation
 
 ```bash
-git clone https://github.com/yourusername/student-management-system.git
+git clone https://github.com/anask5/student-management-system.git
 
 cd student-management-system
 ```
