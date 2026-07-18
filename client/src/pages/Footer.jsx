@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <style>{`
+      <style>{`      
+
         .footer{
           margin-top:60px;
           background:rgba(255,255,255,0.08);
@@ -41,8 +42,11 @@ const Footer = () => {
         }
 
         .footer-links{
-          flex:1;
-          min-width:200px;
+          flex: 1;
+          display: flex;
+          min-width: 200px;                        
+          flex-direction: column;
+          align-items: center;
         }
 
         .footer-links h3,
@@ -50,7 +54,7 @@ const Footer = () => {
           margin-bottom:15px;
           color:#ffffff;
         }
-
+ 
         .footer-links a{
           display:block;
           color:#d1d5db;
@@ -67,6 +71,7 @@ const Footer = () => {
         .footer-contact{
           flex:1;
           min-width:250px;
+          text-align: -webkit-center;
         }
 
         .footer-contact p{
@@ -83,10 +88,11 @@ const Footer = () => {
           font-size:14px;
         }
 
-        @media(max-width:768px){
+        @media(max-width:585px){
           .footer-container{
             flex-direction:column;
             text-align:center;
+            align-items: center;
           }
 
           .footer-brand p{
