@@ -1,15 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import imp from "/public/home2.png";
 
 const Home = () => {
   return (
     <>
       <style>{`
+
+       @font-face {
+        font-family: 'Phantom';
+        src: url('/public/PhantomGuardian.woff');
+      }
         *{
           margin:0;
           padding:0;
           box-sizing:border-box;
-          font-family:Inter,Segoe UI,sans-serif;
+          font-family:Phantom,Segoe UI,sans-serif;
         }
 
         .home{
@@ -29,7 +35,7 @@ const Home = () => {
         }
 
         .hero h1{
-          font-size:56px;
+          font-size:57px;
           margin-bottom:20px;
           line-height:1.2;
         }
@@ -39,10 +45,10 @@ const Home = () => {
         }
 
         .hero p{
-          font-size:18px;
           color:#cbd5e1;
-          line-height:1.8;
+          line-height:1.9;
           margin-bottom:40px;
+          font-size:23px;
         }
 
         .buttons{
@@ -100,12 +106,14 @@ const Home = () => {
 
         .card h2{
           margin:18px 0;
-          font-size:24px;
+          font-size:27px;
+
         }
 
         .card p{
           color:#d1d5db;
           line-height:1.7;
+          font-size: 18px;
         }
 
         .icon{
@@ -123,7 +131,37 @@ const Home = () => {
           }
 
         }
+        @media(max-width:850px){
+          .low-h img{
+          display:none;
+          }
+
+        }
+        @media(min-width:850px){
+          .wa-ge{
+          display:none;
+          }
+
+        }
+
+        .wa-ge{
+        height:35px;
+        }
+        .low-h{
+          display:flex;
+        }
+        .low-h img{
+        height:10cm;
+        width:auto;
+        }
+        .lh {
+        margin-top:20px;
+        }
+        
+
+
       `}</style>
+      <p className="wa-ge"></p>
 
       <div className="home">
 
@@ -131,22 +169,29 @@ const Home = () => {
           <h1>
             Welcome to the <span>Student Management System</span>
           </h1>
+          <div className="low-h">
+            <div className="lh">
+              <p>
+                A smart platform for managing students, attendance,
+                academic records, course information, and faculty operations
+                with a simple, secure, and modern interface.
+              </p>
+              <div className="buttons">
+                <Link to="/login" className="btn primary">
+                  Login
+                </Link>
 
-          <p>
-            A smart platform for managing students, attendance,
-            academic records, course information, and faculty operations
-            with a simple, secure, and modern interface.
-          </p>
+                <Link to="/register" className="btn secondary">
+                  Register
+                </Link>
+              </div>
+            </div>
 
-          <div className="buttons">
-            <Link to="/login" className="btn primary">
-              Login
-            </Link>
-
-            <Link to="/register" className="btn secondary">
-              Register
-            </Link>
+            <Image />
           </div>
+
+
+
         </section>
 
         <section className="features">
@@ -187,11 +232,17 @@ const Home = () => {
             </p>
           </div>
 
+
+
         </section>
 
       </div>
     </>
   );
 };
-
+function Image() {
+  return (
+    <img src={imp} alt="degree" />
+  )
+}
 export default Home;

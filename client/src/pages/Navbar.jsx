@@ -153,9 +153,9 @@ async function checkLogin() {
         @media(max-width:850px){
 
           .navbar{
-            flex-direction:column;
-            gap:20px;
-            padding:20px;
+            flex-direction: column;
+            gap: 10px;
+            padding: 8px;
           }
 
           ul{
