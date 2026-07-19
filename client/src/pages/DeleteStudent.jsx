@@ -33,11 +33,15 @@ else{
   return (
     <>
       <style>{`
+       @font-face {
+          font-family: Lato;
+          src: url('public/Lato-Regular.woff') format('woff');
+        }
         *{
           margin:0;
           padding:0;
           box-sizing:border-box;
-          font-family:Inter,Segoe UI,sans-serif;
+          font-family:Lato;
         }
 
         .add-student-page{
@@ -52,6 +56,7 @@ else{
 
         .page-title{
           margin-bottom:30px;
+          text-align:center;
         }
 
         .page-title h1{
@@ -90,9 +95,11 @@ else{
         }
 
         label{
-          margin-bottom:8px;
+          margin-top: 16px;
+          margin-bottom: 16px;
           color:#cbd5e1;
-          font-size:14px;
+          font-size:24px;
+          font-weight:600;
         }
 
         input,
@@ -102,7 +109,7 @@ else{
           border:none;
           outline:none;
           border-radius:12px;
-          background:rgba(255,255,255,.08);
+          background:rgba(255,255,255,.01);
           color:white;
           border:1px solid rgba(255,255,255,.12);
           font-size:15px;
@@ -168,15 +175,21 @@ else{
           }
 
         }
+        .wa-ge{
+          height:35px;
+        }
 
       `}</style>
+
+      <p className="wa-ge"></p>
 
       <div className="add-student-page">
 
         <div className="page-title">
-          <h1>🗑️ Delete Student</h1>
-          <p>Fill in the student information below.</p>
+          <h1> Remove Student</h1>
+          <p>Fill in the student information below. To remove the student's detail from the system🗑️</p>
         </div>
+        <p className="wa-ge"></p>
 
         <form className="form-card" onSubmit={handleSubmit}>
 
@@ -208,7 +221,7 @@ required    />
               type="submit"
               className="btn save"
             >
-              Delete Student
+              Remove Student
             </button>
           </div>
 

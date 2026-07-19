@@ -41,14 +41,14 @@ const Login = () => {
       <style>{`
 
       @font-face {
-        font-family: 'Phantom';
-        src: url('/public/PhantomGuardian.woff');
-      }
+          font-family: Lato;
+          src: url('public/Lato-Regular.woff') format('woff');
+        }
         *{
           margin:0;
           padding:0;
           box-sizing:border-box;
-          font-family:Phantom,Segoe UI,sans-serif;
+          font-family:Lato;
         }
 
         .login-page{

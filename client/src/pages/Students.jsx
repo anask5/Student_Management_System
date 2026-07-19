@@ -62,11 +62,15 @@ useEffect(() => {
   return (
     <>
       <style>{`
+        @font-face {
+          font-family: Lato;
+          src: url('public/Lato-Regular.woff') format('woff');
+        }
         *{
           margin:0;
           padding:0;
           box-sizing:border-box;
-          font-family:Inter,Segoe UI,sans-serif;
+          font-family:Lato;
         }
 
         .students-page{

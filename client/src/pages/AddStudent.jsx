@@ -48,11 +48,15 @@ else{
   return (
     <>
       <style>{`
+      @font-face {
+          font-family: Lato;
+          src: url('public/Lato-Regular.woff') format('woff');
+        }
         *{
           margin:0;
           padding:0;
           box-sizing:border-box;
-          font-family:Inter,Segoe UI,sans-serif;
+          font-family:Lato,Segoe UI,sans-serif;
         }
 
         .add-student-page{
@@ -67,6 +71,7 @@ else{
 
         .page-title{
           margin-bottom:30px;
+          text-align:center;
         }
 
         .page-title h1{
@@ -84,7 +89,7 @@ else{
           padding:35px;
           border-radius:20px;
           backdrop-filter:blur(18px);
-          background:rgba(255,255,255,.08);
+          background:rgba(255, 255, 255, 0.01);
           border:1px solid rgba(255,255,255,.12);
           box-shadow:0 10px 40px rgba(0,0,0,.25);
         }
@@ -183,13 +188,18 @@ else{
           }
 
         }
+        .wa-ge{
+          height:35px;
+        }
+
 
       `}</style>
+      <p className="wa-ge"></p>
 
       <div className="add-student-page">
 
-        <div className="page-title">
-          <h1>➕ Add Student</h1>
+        <div className="page-title"> 
+          <h1>Add Student➕</h1>
           <p>Fill in the student information below.</p>
         </div>
 
@@ -253,7 +263,7 @@ onChange={(e) => setBranch(e.target.value)}
               <input
                 type="text"
                 name="semester"
-                placeholder="2nd"
+                placeholder="1st"
 onChange={(e) => setSemester(e.target.value)}
               />
             </div>

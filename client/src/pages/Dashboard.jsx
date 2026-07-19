@@ -25,13 +25,16 @@ const navigate = useNavigate();
   return (
     <>
       <style>{`
+      @font-face {
+          font-family: Lato;
+          src: url('public/Lato-Regular.woff') format('woff');
+        }
         *{
           margin:0;
           padding:0;
           box-sizing:border-box;
-          font-family:Inter,Segoe UI,sans-serif;
+          font-family:Lato;
         }
-
         .dashboard{
           min-height:100vh;
           padding:120px 8% 50px;
@@ -94,7 +97,7 @@ const navigate = useNavigate();
 
         .content{
           display:grid;
-          grid-template-columns:2fr 1fr;
+          grid-template-columns:1fr 2fr;
           gap:30px;
         }
 
@@ -123,25 +126,32 @@ const navigate = useNavigate();
         }
 
         .activity span{
-          color:#9ca3af;
+          color:#ffffff;
         }
 
         .quick-actions{
           display:grid;
+          grid-template-columns:repeat(2,1fr);
           gap:15px;
+
         }
 
         .action-btn{
           padding:14px;
+
           border:none;
           border-radius:12px;
-          background:linear-gradient(135deg,#3b82f6,#6366f1);
+          background: linear-gradient(135deg,rgba(59, 131, 246, 0.12), rgba(99, 101, 241, 0.14));
           color:white;
-          font-size:15px;
+          font-size:18px;
           font-weight:600;
           cursor:pointer;
           transition:.3s;
         }
+          a{
+            text-decoration:none;
+            color:white;
+          }
 
         .action-btn:hover{
           transform:translateY(-3px);
@@ -199,6 +209,31 @@ const navigate = useNavigate();
         <div className="content">
 
           <div className="panel">
+
+            <h3>⚡ Quick Actions</h3>
+
+            <div className="quick-actions">
+              <button className="action-btn">
+                 <Link to="/addStudent">➕ Add Student</Link></button>
+
+              <button className="action-btn">
+                <Link to="/updateStudent">     📅 Update Student </Link>
+            
+              </button>
+
+              <button className="action-btn">
+                <Link to="/deleteStudent">    📚 Remove Student </Link>
+              </button>
+
+              <button className="action-btn">
+                 <Link to="/students">📊 View Students
+    
+                </Link>
+              </button>
+            </div>
+
+          </div>
+          <div className="panel">
             <h3>📝 Recent Activities</h3>
 
             <div className="activity">
@@ -223,35 +258,6 @@ const navigate = useNavigate();
 
           </div>
 
-          <div className="panel">
-
-            <h3>⚡ Quick Actions</h3>
-
-            <div className="quick-actions">
-              <button className="action-btn">
-                 <Link to="/addStudent">
-                ➕ Add Student
-            </Link>
-                          </button>
-
-              <button className="action-btn">
-                <Link to="/updateStudent">     📅 Update Student </Link>
-            
-              </button>
-
-              <button className="action-btn">
-                <Link to="/deleteStudent">    📚 Delete Student </Link>
-              </button>
-
-              <button className="action-btn">
-                 <Link to="/students">
-    📊 View Students
-    
-                </Link>
-              </button>
-            </div>
-
-          </div>
 
         </div>
 
