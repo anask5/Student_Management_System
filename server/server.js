@@ -50,7 +50,7 @@ app.post('/api/register', async (req, res) => {
           })
            let token =  jwt.sign({email: newUser.email,
             role: createdUser.role
-           }, process.env.MONGO_URI,
+           }, process.env.JWT_SECRET,
                 
              );
         res.cookie("token", token, {
@@ -136,7 +136,7 @@ app.post('/api/login', async (req, res) => {
         if (isMatch) {
              let token =  jwt.sign({email: foundUser.email,
                 role: foundUser.role
-                          }, process.env.MONGO_URI,
+                          }, process.env.JWT_SECRET,
                 
              );
          res.cookie("token", token, {
