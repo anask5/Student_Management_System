@@ -28,7 +28,7 @@ async function handleLogout(){
   }
 }
 async function checkLogin() {
-    const response = await fetch("http://localhost:3000/api/me", {
+    const response = await fetch("http://localhost:3000/api/student", {
         credentials: "include",
     });
 
@@ -185,7 +185,7 @@ async function checkLogin() {
 
      {loggedIn ? (
   <>
-    <Link to="/dashboard">
+    <Link to="/dashboard_student">
       <li>Dashboard</li>
     </Link>
 

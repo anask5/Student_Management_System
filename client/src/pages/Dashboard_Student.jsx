@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 const Dashboard = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [roll_no, setRollNo] = useState('')
 const navigate = useNavigate();
   useEffect(() => {
     checkLogin();
@@ -9,7 +12,7 @@ const navigate = useNavigate();
 
   async function checkLogin() {
     try {
-      const response = await fetch("http://localhost:3000/api/me", {
+      const response = await fetch("http://localhost:3000/api/student", {
         method: "GET",
         credentials: "include",
       });
@@ -17,6 +20,11 @@ const navigate = useNavigate();
       if (!response.ok) {
         navigate("/login");
       }
+
+      const data = await response.json();
+      await setEmail(data.email);
+      await setName(data.name);
+      await setRollNo(data.roll_no);
     } catch (err) {
       console.error(err);
       navigate("/login");
@@ -175,92 +183,11 @@ const navigate = useNavigate();
 
         <div className="header">
           <h1>📊 Dashboard</h1>
-          <p>Welcome Back! Here's an overview of your Student Management System.</p>
+          <p>Welcome back!</p>
         </div>
-
-        <div className="stats">
-
-          <div className="card">
-            <div className="icon">👨‍🎓</div>
-            <h2>520</h2>
-            <p>Total Students</p>
-          </div>
-
-          <div className="card">
-            <div className="icon">👨‍🏫</div>
-            <h2>48</h2>
-            <p>Faculty Members</p>
-          </div>
-
-          <div className="card">
-            <div className="icon">📚</div>
-            <h2>32</h2>
-            <p>Courses</p>
-          </div>
-
-          <div className="card">
-            <div className="icon">✅</div>
-            <h2>95%</h2>
-            <p>Attendance</p>
-          </div>
-
-        </div>
-
-        <div className="content">
-
-          <div className="panel">
-
-            <h3>⚡ Quick Actions</h3>
-
-            <div className="quick-actions">
-              <button className="action-btn">
-                 <Link to="/addStudent">➕ Add Student</Link></button>
-
-              <button className="action-btn">
-                <Link to="/updateStudent">     📅 Update Student </Link>
-            
-              </button>
-
-              <button className="action-btn">
-                <Link to="/deleteStudent">    📚 Remove Student </Link>
-              </button>
-
-              <button className="action-btn">
-                 <Link to="/students">📊 View Students
-    
-                </Link>
-              </button>
-            </div>
-
-          </div>
-          <div className="panel">
-            <h3>📝 Recent Activities</h3>
-
-            <div className="activity">
-              <p>John Smith registered successfully</p>
-              <span>10 min ago</span>
-            </div>
-
-            <div className="activity">
-              <p>Attendance updated for BCA 3rd Year</p>
-              <span>30 min ago</span>
-            </div>
-
-            <div className="activity">
-              <p>Semester Results Published</p>
-              <span>1 hour ago</span>
-            </div>
-
-            <div className="activity">
-              <p>New Course Added: Data Science</p>
-              <span>Today</span>
-            </div>
-
-          </div>
-
-
-        </div>
-
+          <p> Name: {name} </p>
+          <p> Email: {email} </p>
+          <p> Roll No: {roll_no} </p>
       </div>
     </>
   );

@@ -26,7 +26,7 @@ const Login = () => {
 
       if (response.ok) {
         setMessage(data.message);
-        navigate("/dashboard")
+        navigate("/dashboard_student")
       }
       else {
         setMessage(data.message);

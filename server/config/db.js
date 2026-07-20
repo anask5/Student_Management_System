@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 async function db () { 
 try {
 
-  await mongoose.connect("mongodb://127.0.0.1:27017/kriphin");
+  await mongoose.connect(process.env.MONGO_URL);
   console.log("MongoDB connected");
 
 } catch (err) 

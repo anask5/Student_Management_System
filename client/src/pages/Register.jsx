@@ -6,6 +6,7 @@ import imp from "/public/register2.png";
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [roll_no, setRollNo] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const Register = () => {
         },
         body: JSON.stringify({
           name,
+          roll_no,
           email,
           password,
         })
@@ -27,7 +29,7 @@ const Register = () => {
       const data = await response.json();
       if (response.ok) {
         setMessage(data.message);
-        navigate("/dashboard")
+        navigate("/dashboard_student")
       }
       else {
         setMessage(data.message);
@@ -233,10 +235,13 @@ const Register = () => {
       <div className="register-page">
         <div className="register-card">
           <h1>Register</h1>
-          <p>Create your Student Management account</p>
+          <p>Create your Student account</p>
           <form onSubmit={handleReg}>
             <div className="input-group">
               <input type="text" placeholder="Full Name" onChange={(e) => setName(e.target.value)} />
+            </div>
+            <div className="input-group">
+              <input type="text" placeholder="Roll_NO" onChange={(e) => setRollNo(e.target.value)} />
             </div>
 
             <div className="input-group">

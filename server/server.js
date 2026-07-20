@@ -10,7 +10,7 @@ import auth from '../server/middleware/auth.js'
 import studentModel from '../server/models/StudentModel.js';
 import isTeacher from "./middleware/isTeacher.js";
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Middlewares
 app.use(cookieParser());
@@ -43,13 +43,14 @@ app.post('/api/register', async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(newUser.password, salt);
     let createdUser = await userModel.create({
+            roll_no: newUser.roll_no,
             name: newUser.name,
             password: secPass,
             email: newUser.email
           })
            let token =  jwt.sign({email: newUser.email,
             role: createdUser.role
-           }, "secret",
+           }, process.env.MONGO_URI,
                 
              );
         res.cookie("token", token, {
@@ -135,7 +136,7 @@ app.post('/api/login', async (req, res) => {
         if (isMatch) {
              let token =  jwt.sign({email: foundUser.email,
                 role: foundUser.role
-                          }, "secret",
+                          }, process.env.MONGO_URI,
                 
              );
          res.cookie("token", token, {
@@ -143,6 +144,7 @@ app.post('/api/login', async (req, res) => {
             sameSite: "lax"
         });
             res.status(200).json({
+            success: true,
              message: "Login Successfully"
 });        } 
         else {
@@ -157,8 +159,25 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-app.get("/api/me", auth, (req, res) => {
+app.get("/api/me", auth,isTeacher, (req, res) => {
     res.json(req.user);
+});
+
+app.get("/api/student", auth, async (req, res) => {
+
+  try {
+    const email = req.user.email;
+    const response = await userModel.findOne({email});
+    res.json({
+      name: response.name,
+      email: response.email,
+      roll_no: response.roll_no
+    }
+    );
+  } catch(err){
+    res.status(400).json(err);
+  }
+
 });
 
 

@@ -1,13 +1,37 @@
-import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken';
 
-function isAdmin(req, res, next) {
-    if (req.user.role !== "admin") {
-        return res.status(403).json({
+// function isAdmin(req, res, next) {
+
+//     if (req.user.role !== "admin") {
+//         return res.status(403).json({
+//             message: "Access denied. Admin only.",
+//         });
+//     }
+
+//     next();
+// }
+
+// export default isAdmin;
+
+
+import jwt from 'jsonwebtoken';
+function isTeacher(req, res, next) {
+    try {
+        const data = jwt.verify(req.cookies.token, process.env.MONGO_URI);
+
+        req.user = data;
+        if(data.role !== "admin"){
+           return res.status(403).json({
             message: "Access denied. Admin only.",
         });
+        }
+        console.log(data)
+        next();
+    } catch (err) {
+        return res.status(401).json({
+            message: "Unauthorized"
+        });
     }
-
-    next();
 }
 
-export default isAdmin;
+export default isTeacher;

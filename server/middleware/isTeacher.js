@@ -1,13 +1,35 @@
-import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken';
 
+// function isTeacher(req, res, next) {
+//     if (req.user.role !== "teacher") {
+//         return res.status(403).json({
+//             message: "Access denied. Teachers only.",
+//         });
+//     }
+
+//     next();
+// }
+
+// export default isTeacher;
+
+import jwt from 'jsonwebtoken';
 function isTeacher(req, res, next) {
-    if (req.user.role !== "teacher") {
-        return res.status(403).json({
+    try {
+        const data = jwt.verify(req.cookies.token, process.env.MONGO_URI);
+
+        req.user = data;
+        if(data.role !== "teacher"){
+           return res.status(403).json({
             message: "Access denied. Teachers only.",
         });
+        }
+        console.log(data)
+        next();
+    } catch (err) {
+        return res.status(401).json({
+            message: "Unauthorized"
+        });
     }
-
-    next();
 }
 
 export default isTeacher;
