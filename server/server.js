@@ -17,7 +17,6 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(
- app.use(
   cors({
     origin: [
       "https://student.fs0ciety.in",
