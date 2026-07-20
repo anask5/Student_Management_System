@@ -138,11 +138,11 @@ Protected Routes
 
 | Register | Login |
 |----------|-------|
-| # | # Screenshot |
+| <img src="https://i.ibb.co/YJ4fx87/image.png" width="600" | <img src="https://i.ibb.co/4nnY0f3M/image.png" width="600" |
 
 | Dashboard | Students |
 |-----------|----------|
-| <img src="https://i.ibb.co/Kc1kjf64/image.png" alt="dashboard" width="600">  | # Screenshot |
+| <img src="https://i.ibb.co/Kc1kjf64/image.png" alt="dashboard" width="600">  | <img src="https://i.ibb.co/tTbmnt0h/image.png" width="600"> |
 
 ---
 
