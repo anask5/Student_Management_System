@@ -55,6 +55,7 @@ app.post('/api/register', async (req, res) => {
              );
         res.cookie("token", token, {
             httpOnly: true,
+            secure: true,
             sameSite: "none"
         });
         res.status(201).json({
@@ -141,6 +142,7 @@ app.post('/api/login', async (req, res) => {
              );
          res.cookie("token", token, {
             httpOnly: true,
+            secure: true,
             sameSite: "none"
         });
             res.status(200).json({
@@ -229,6 +231,7 @@ app.post("/api/logout", auth, async (req, res) => {
     try {
          res.clearCookie("token", {
             httpOnly: true,
+            secure: true,
             sameSite: "none",
         });
           return res.status(200).json({
