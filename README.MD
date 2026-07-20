@@ -36,6 +36,11 @@ A full-stack Student Management System built using the MERN stack with secure JW
 - Delete Student
 - Student Information Management
 
+### Teacher Login
+
+- Email: admin@example.com
+- Password: admin123
+
 ### ⚛ Frontend
 - Responsive React UI
 - Fetch API Integration
