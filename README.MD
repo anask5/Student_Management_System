@@ -142,7 +142,7 @@ Protected Routes
 
 | Dashboard | Students |
 |-----------|----------|
-| <img src="https://ibb.co/XfwgZKX0" alt="dashboard" width="600">  | # Screenshot |
+| <img src="https://i.ibb.co/Kc1kjf64/image.png" alt="dashboard" width="600">  | # Screenshot |
 
 ---
 
