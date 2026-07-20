@@ -7,7 +7,7 @@ const DeleteStudent = () => {
   async function  handleSubmit(e){
     e.preventDefault();
     alert("Are you sure you want to delete?")
-     try { const response = await fetch(`http://localhost:3000/api/deleteStudent/${rollno}`, {
+     try { const response = await fetch(`https://student-management-system-8u00.onrender.com/api/deleteStudent/${rollno}`, {
             credentials: "include",
              method: "DELETE",
             headers: {

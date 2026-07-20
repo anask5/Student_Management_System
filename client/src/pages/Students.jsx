@@ -8,7 +8,7 @@ const Students = () => {
  
   async function getStudents() {
     try {
-        const response = await fetch("http://localhost:3000/api/getStudents",
+        const response = await fetch("https://student-management-system-8u00.onrender.com/api/getStudents",
           {
             credentials: "include",
           });
@@ -31,7 +31,7 @@ async function  deleteStudent(rollno){
 if (!confirmDelete) {
     return;
 }
-     try { const response = await fetch(`http://localhost:3000/api/deleteStudent/${rollno}`, {
+     try { const response = await fetch(`https://student-management-system-8u00.onrender.com/api/deleteStudent/${rollno}`, {
             credentials: "include",
              method: "DELETE",
             headers: {

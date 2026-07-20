@@ -11,7 +11,7 @@ const Login = () => {
   async function handleLogin(e) {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/login", {
+      const response = await fetch("https://student-management-system-8u00.onrender.com/api/login", {
         method: "POST",
         credentials: "include",
         headers: {

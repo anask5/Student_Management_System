@@ -13,7 +13,7 @@ const Register = () => {
   async function handleReg(e) {
     e.preventDefault()
     try {
-      const response = await fetch("http://localhost:3000/api/register", {
+      const response = await fetch("https://student-management-system-8u00.onrender.com/api/register", {
         credentials: "include",
         method: "POST",
         headers: {

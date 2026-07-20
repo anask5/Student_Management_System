@@ -11,7 +11,7 @@ const NavBar = () => {
 }, []);
 async function handleLogout(){
     try {
-  const response = await fetch("http://localhost:3000/api/logout", {
+  const response = await fetch("https://student-management-system-8u00.onrender.com/api/logout", {
           credentials: "include",
           method: "POST"
   },
@@ -28,7 +28,7 @@ async function handleLogout(){
   }
 }
 async function checkLogin() {
-    const response = await fetch("http://localhost:3000/api/student", {
+    const response = await fetch("https://student-management-system-8u00.onrender.com/api/student", {
         credentials: "include",
     });
 

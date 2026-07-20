@@ -12,7 +12,7 @@ const navigate = useNavigate();
 
   async function checkLogin() {
     try {
-      const response = await fetch("http://localhost:3000/api/student", {
+      const response = await fetch("https://student-management-system-8u00.onrender.com/api/student", {
         method: "GET",
         credentials: "include",
       });

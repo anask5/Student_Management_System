@@ -15,7 +15,7 @@ const AddStudent = () => {
   async function  handleSubmit(e){
     e.preventDefault();
     console.log(name);
-     try { const response = await fetch(`http://localhost:3000/api/updateStudent/${rollno}`, {
+     try { const response = await fetch(`https://student-management-system-8u00.onrender.com/api/updateStudent/${rollno}`, {
             credentials: "include",
              method: "PUT",
             headers: {
