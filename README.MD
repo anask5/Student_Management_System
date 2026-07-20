@@ -184,13 +184,13 @@ npm run dev
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Authors
 
 **Anas Khan**
-
 GitHub: https://github.com/anask5
-
 LinkedIn: https://linkedin.com/anaskhan-cs
+
+**Suryansh Kashav**
 
 ---
 
