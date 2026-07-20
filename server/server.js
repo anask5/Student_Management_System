@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(
   cors({
-    origin: process.env.CLIENT, 
+    origin: "https://student.fs0ciety.in/", 
     credentials: true, // React app
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
