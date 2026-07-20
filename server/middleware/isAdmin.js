@@ -17,7 +17,7 @@
 import jwt from 'jsonwebtoken';
 function isTeacher(req, res, next) {
     try {
-        const data = jwt.verify(req.cookies.token, process.env.MONGO_URI);
+        const data = jwt.verify(req.cookies.token, process.env.MONGO_URL);
 
         req.user = data;
         if(data.role !== "admin"){

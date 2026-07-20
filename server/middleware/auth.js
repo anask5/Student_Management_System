@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 function auth(req, res, next) {
     try {
-        const data = jwt.verify(req.cookies.token, process.env.MONGO_URI);
+        const data = jwt.verify(req.cookies.token, process.env.MONGO_URL);
 
         req.user = data;
         next();
