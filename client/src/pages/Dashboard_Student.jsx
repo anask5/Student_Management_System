@@ -182,12 +182,14 @@ const navigate = useNavigate();
       <div className="dashboard">
 
         <div className="header">
-          <h1>📊 Dashboard</h1>
+          <h1>📊 Dashboard For Students </h1>
           <p>Welcome back!</p>
         </div>
           <p> Name: {name} </p>
           <p> Email: {email} </p>
           <p> Roll No: {roll_no} </p>
+
+          <p>  <Link to="/dashboard"> 📅 Not a student? click here to manage students </Link>  </p>
       </div>
     </>
   );
