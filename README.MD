@@ -138,7 +138,7 @@ Protected Routes
 
 | Register | Login |
 |----------|-------|
-| <img src="https://i.ibb.co/YJ4fx87/image.png" width="600"> | <img src="https://ibb.co/7xJFPK2V" width="600"> |
+| <img src="https://i.ibb.co/YJ4fx87/image.png" width="600"> | <img src="https://ibb.co/7xJFPK2V/image.png" width="600"> |
 
 | Dashboard | Students |
 |-----------|----------|
