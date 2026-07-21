@@ -31,7 +31,7 @@ async function  deleteStudent(rollno){
 if (!confirmDelete) {
     return;
 }
-     try { const response = await fetch(`https://student-management-system-8u00.onrender.com/api/deleteStudent/${rollno}`, {
+     try { const response = await fetch(`https://student-management-system-8u00.onrender.com/api/deleteStudent/${rollNo}`, {
             credentials: "include",
              method: "DELETE",
             headers: {
