@@ -138,11 +138,11 @@ Protected Routes
 
 | Register | Login |
 |----------|-------|
-| <img src="https://i.ibb.co/YJ4fx87/image.png" width="600"> | <img src="https://ibb.co/7xJFPK2V/image.png" width="600"> |
+| <img src="https://cdn.corenexis.com/f/7hJxQg0BtLp.png" width="600"> | <img src="https://cdn.corenexis.com/f/UufgoJzOhj7.png" width="600"> |
 
 | Dashboard | Students |
 |-----------|----------|
-| <img src="https://i.ibb.co/Kc1kjf64/image.png" alt="dashboard" width="600">  | <img src="https://i.ibb.co/tTbmnt0h/image.png" width="600"> |
+| <img src="https://cdn.corenexis.com/f/LXrOf8rhCrD.png" alt="dashboard" width="600">  | <img src="https://cdn.corenexis.com/f/IPXtQNSzI6T.png" width="600"> |
 
 ---
 
