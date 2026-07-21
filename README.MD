@@ -191,6 +191,8 @@ GitHub: https://github.com/anask5
 LinkedIn: https://linkedin.com/anaskhan-cs
 
 **Suryansh Kashav**
+GitHub: https://github.com/SKCharlie-17
+LinkedIn: www.linkedin.com/in/suryansh-kashav
 
 ---
 
