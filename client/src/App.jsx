@@ -9,6 +9,7 @@ import AddStudent from "./pages/AddStudent";
 import EditStudent from "./pages/EditStudent";
 import Students from "./pages/Students";
 import DeleteStudent from "./pages/DeleteStudent";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const router = createBrowserRouter([
@@ -45,6 +46,9 @@ function App() {
         },
          { path: "/dashboard_student",
           element: <Dashboard_Student />,
+        },
+         { path: "*",
+          element: <NotFound />,
         },
       ],
     },

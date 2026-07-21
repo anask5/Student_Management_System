@@ -27,7 +27,7 @@ const navigate = useNavigate();
       <style>{`
       @font-face {
           font-family: Lato;
-          src: url('public/Lato-Regular.woff') format('woff');
+          src: url('/Lato-Regular.woff') format('woff');
         }
         *{
           margin:0;

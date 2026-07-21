@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(
   cors({
     origin: [
-      "https://student.fs0ciety.in",
+      "https://nova.fs0ciety.in/",
       "https://student-management-system-beta-tan-47.vercel.app",
     ],
     credentials: true,
