@@ -38,11 +38,10 @@ A full-stack Student Management System built using the MERN stack with secure JW
 
 ### Teacher Login
 
-- Email: admin@example.com
-- Password: admin123
+- Email: teacher@example.com
+- Password: teacher123
 
-### ⚛ Frontend
-- Responsive React UI
+### ⚛ Frontend UI
 - Fetch API Integration
 - React Router
 - Protected Navigation
